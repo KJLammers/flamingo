@@ -49,6 +49,7 @@
         <postgresql.version>42.0.0</postgresql.version>
         <apache.poi.version>3.15</apache.poi.version>
         <apache.httpcomponents.version>4.5.3</apache.httpcomponents.version>
+        <cobertura.version>2.1.1</cobertura.version>
         <!-- skip integration tests by default, override this property from commandline
         or as part of a profile, see eg. 'travis-ci' profile in viewer -->
         <test.skip.integrationtests>false</test.skip.integrationtests>
@@ -454,7 +455,7 @@
             <dependency> 
                 <groupId>net.sourceforge.cobertura</groupId> 
                 <artifactId>cobertura</artifactId> 
-                <version>2.1.1</version> 
+                <version>${cobertura.version}</version>
                 <scope>test</scope> 
             </dependency>
         </dependencies>
@@ -611,6 +612,11 @@
                     <artifactId>properties-maven-plugin</artifactId>
                     <version>1.0.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -636,7 +642,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
                 <configuration>
                     <formats>
                         <format>html</format>
